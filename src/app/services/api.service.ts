@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { Banner } from '../interfaces/banner';
 
 interface API<T extends Banner> {
-  info: T | T[] | {} | boolean
+  info: T | T[] | boolean
   results: T | T[] | boolean
 }
 
@@ -17,12 +17,10 @@ export class ApiService<T extends Banner> {
 
   constructor( public http: HttpClient ) {}
 
-  public getRickAndMotyAPI(): Promise<T> {
+  public getRickAndMotyAPI(): Promise<T[]> {
     return lastValueFrom(this.http.get<API<T>>(this.rickAndMotyAPI))
-      .then( allBanners => {
-        console.log("info: ", allBanners.info);
-
-        return this.handleResponse(allBanners) as T;
+      .then( characters => {
+        return this.handleResponse(characters) as T[];
       });
   }
 
