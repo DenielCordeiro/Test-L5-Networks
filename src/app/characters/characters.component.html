@@ -7,9 +7,8 @@
 <section id="grafico"></section>
 
 <section id="items-list-desktop">
-
   <div class="row">
-    <div class="items py-4 col-6" *ngFor="let character of characters">
+    <div class="items py-4 col-6" *ngFor="let character of characters | paginate: { itemsPerPage: 2, currentPage: currentPage, totalItems: totalCharacters }">
       <a class="item px-3 row" (click)="openDescriptionModal()">
         <div class="description col-6">
           <h1 class="name my-1">{{ character?.name }}</h1>
@@ -18,14 +17,24 @@
         </div>
 
         <div class="image col-6">
-          <!-- <img src="{{ character.image }}" alt="image"> -->
-          <img src="https://th.bing.com/th/id/OIP.H5Xu8XZHiEXYz7J_ZVApDwHaFP?rs=1&pid=ImgDetMain" alt="image">
+          <img src="{{ character.image }}" alt="image">
         </div>
       </a>
     </div>
-  </div>
 
+    <div class="pagination row">
+      <div class="col-2 forward">Anterior</div>
+
+      <div class="col-8">
+        <span>{{ currentPage }}</span>
+      </div>
+
+      <div type="button" class="btn btn-primary col-2 forward" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>
+    </div>
+
+  </div>
 </section>
+
 
 
 <!-- <section id="items-list-mobile">

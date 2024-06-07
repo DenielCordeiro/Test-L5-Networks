@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { CharactersComponent } from './characters/characters.component';
@@ -21,6 +24,7 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,91 +8,13 @@ import { Character } from '../interfaces/banner';
   styleUrls: ['./characters.component.sass']
 })
 export class CharactersComponent {
-  characters: Character[] = [
-    {
-      "id": 0,
-      "name": "string",
-      "status": "string",
-      "species": "string",
-      "type": "string",
-      "gender": "string",
-      "origin": {
-        "name": "string",
-        "url": "string"
-      },
-      "location": {
-        "name": "string",
-        "url": "string"
-      },
-      "image": "string",
-      "episode": [],
-      "url": "string",
-      "created": "string"
-    },
-    {
-      "id": 1,
-      "name": "string",
-      "status": "string",
-      "species": "string",
-      "type": "string",
-      "gender": "string",
-      "origin": {
-        "name": "string",
-        "url": "string"
-      },
-      "location": {
-        "name": "string",
-        "url": "string"
-      },
-      "image": "string",
-      "episode": [],
-      "url": "string",
-      "created": "string"
-    },
-    {
-      "id": 2,
-      "name": "string",
-      "status": "string",
-      "species": "string",
-      "type": "string",
-      "gender": "string",
-      "origin": {
-        "name": "string",
-        "url": "string"
-      },
-      "location": {
-        "name": "string",
-        "url": "string"
-      },
-      "image": "string",
-      "episode": [],
-      "url": "string",
-      "created": "string"
-    },
-    {
-      "id": 3,
-      "name": "string",
-      "status": "string",
-      "species": "string",
-      "type": "string",
-      "gender": "string",
-      "origin": {
-        "name": "string",
-        "url": "string"
-      },
-      "location": {
-        "name": "string",
-        "url": "string"
-      },
-      "image": "string",
-      "episode": [],
-      "url": "string",
-      "created": "string"
-    }
-  ];
+  characters: Character[] = []
+  totalCharacters: number = 0;
+  pageQuatity: number = 1;
+  currentPage: number = 1;
 
   constructor( private apiService: ApiService<Character> ) {
-    // this.getItemsList();
+    this.getItemsList();
   }
 
   getItemsList(): Character[] {
@@ -100,13 +22,50 @@ export class CharactersComponent {
       .then(items => {
         this.characters = items;
         console.log("items: ", this.characters);
-      })
+
+        this.characters.forEach(character => {
+          this.totalCharacters = Number(character.id);
+        });
+
+        this.pageQuatity = this.totalCharacters / 2;
+
+        console.log("page: ", this.pageQuatity);
+      });
 
     return this.characters;
   }
 
+  forwardOrBackward(option: string, page: number,) {
+    if (option == "forward") {
+
+      if (page < this.totalCharacters) {
+        this.currentPage += 1;
+      } else if (page == this.totalCharacters) {
+        this.currentPage = 1;
+      } else {
+        console.log("[Erro]: Não foi possível escolher uma opção de movimento na função: forwardOrBackward()");
+      }
+
+    } else if (option == "backward") {
+
+      if (page > 1) {
+        this.currentPage -= 1;
+      } else if (page == 1) {
+        this.currentPage = this.totalCharacters;
+      } else {
+        console.log("[Erro]: Não foi possível escolher uma opção de movimento na função: forwardOrBackward()");
+      }
+
+    } else {
+      console.log("[Erro]: Não foi possível enviar dados de paginação à Função: forwardOrBackward()");
+    }
+
+    console.log(option, this.currentPage);
+
+    return this.currentPage;
+  }
+
   openDescriptionModal(): void {
     console.log("Abrir modal");
-
   }
 }
