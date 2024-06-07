@@ -1,0 +1,103 @@
+@use '../../assets/sass/colors'
+@use '../../assets/sass/mobile'
+
+.burguer-icon
+  height: 5vh
+  cursor: pointer
+
+  @include mobile.display
+    padding-top: 0.4vh
+
+  .line
+    width: 40px
+    height: 4px
+    background-color: colors.$black
+    margin: 0px 0px 6px 0px
+
+    @include mobile.display
+      width: 35px
+      height: 7px
+      margin-bottom: 3px
+
+  .line-one
+    transform: rotate(0deg)
+    transition: all 400ms
+
+  .line-three
+    transform: rotate(-0deg)
+    transition: all 400ms
+
+  &:hover
+    .line
+      background-color: colors.$pourple
+
+.selected
+  padding-top: 1.8vh
+
+  @include mobile.display
+    padding-top: 1.8vh
+
+  .line
+    background-color: colors.$black
+
+  .line-one
+    position: absolute
+    transform: rotate(40deg)
+    transition: all 400ms
+
+    @include mobile.display
+      height: 6px
+
+  .line-two
+    display: none
+
+  .line-three
+    position: absolute
+    transform: rotate(-40deg)
+    transition: all 400ms
+
+    @include mobile.display
+      height: 6px
+
+.content-menu
+  position: absolute
+  width: 100%
+  height: 80%
+  display: flex
+  justify-content: center
+  align-items: center
+
+
+.menu
+  background-color: colors.$white
+  width: 0px
+  right: 0px
+  border: 0px
+  display: flex
+  justify-content: center
+  align-items: center
+
+
+  @include mobile.display
+    transition: all 400ms
+    width: 0px
+    top: 0vh
+    right: 0px
+
+.menu-open
+  padding-bottom: 1.5vh
+  z-index: 2
+  width: 25vw
+  height: 25vh
+  border: 2px solid colors.$black
+  border-radius: 10px
+
+  @include mobile.display
+    top: 0vh
+    right: 0px
+    width: 43%
+    height: auto
+    border-top-left-radius: 10px
+    border-bottom-left-radius: 10px
+    border-top-right-radius: 0px
+    border-bottom-right-radius: 0px

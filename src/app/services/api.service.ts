@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
-import { Banner } from '../interfaces/banner';
+import { Character } from '../interfaces/banner';
 
-interface API<T extends Banner> {
+interface API<T extends Character> {
   info: T | T[] | boolean
   results: T | T[] | boolean
 }
@@ -11,7 +11,7 @@ interface API<T extends Banner> {
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService<T extends Banner> {
+export class ApiService<T extends Character> {
 
   rickAndMotyAPI: string = 'https://rickandmortyapi.com/api/character';
 

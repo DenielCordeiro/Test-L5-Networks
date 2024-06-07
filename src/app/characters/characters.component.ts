@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Banner } from '../interfaces/banner';
+import { Character } from '../interfaces/banner';
 
 @Component({
   selector: 'app-items-list',
@@ -8,9 +8,7 @@ import { Banner } from '../interfaces/banner';
   styleUrls: ['./characters.component.sass']
 })
 export class CharactersComponent {
-  // characters!: Banner[];
-
-  characters: Banner[] = [
+  characters: Character[] = [
     {
       "id": 0,
       "name": "string",
@@ -93,11 +91,11 @@ export class CharactersComponent {
     }
   ];
 
-  constructor( private apiService: ApiService<Banner> ) {
+  constructor( private apiService: ApiService<Character> ) {
     // this.getItemsList();
   }
 
-  getItemsList(): Banner[] {
+  getItemsList(): Character[] {
     this.apiService.getRickAndMotyAPI()
       .then(items => {
         this.characters = items;

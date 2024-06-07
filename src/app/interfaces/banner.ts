@@ -1,4 +1,4 @@
-export interface Banner {
+export interface Character {
   id?: number,
   name?: string,
   status?: string,
