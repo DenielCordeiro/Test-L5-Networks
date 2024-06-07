@@ -17,7 +17,7 @@ export class CharactersComponent {
     this.getItemsList();
   }
 
-  getItemsList(): Character[] {
+  public getItemsList(): Character[] {
     this.apiService.getRickAndMotyAPI()
       .then(items => {
         this.characters = items;
@@ -35,7 +35,7 @@ export class CharactersComponent {
     return this.characters;
   }
 
-  forwardOrBackward(option: string, page: number,) {
+  public forwardOrBackward(option: string, page: number,) {
     if (option == "forward") {
 
       if (page < this.totalCharacters) {
@@ -65,7 +65,7 @@ export class CharactersComponent {
     return this.currentPage;
   }
 
-  openDescriptionModal(): void {
+  public openDescriptionModal(): void {
     console.log("Abrir modal");
   }
 }
