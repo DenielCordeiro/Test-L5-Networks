@@ -23,10 +23,14 @@
     </div>
 
     <div class="pagination row">
-      <div class="col-2 forward">Anterior</div>
+      <div type="button" class="btn btn-primary col-2 backward" (click)="forwardOrBackward('backward', currentPage)">Anterior</div>
 
-      <div class="col-8">
+      <div class="col-8 numbers-per-page">
+        <span *ngIf="currentPage - 1 < 1">...</span>
+        <span *ngIf="currentPage - 1 >= 1">{{ currentPage - 1 }}</span>
         <span>{{ currentPage }}</span>
+        <span *ngIf="currentPage + 1 <= totalCharacters / 2">{{ currentPage + 1 }}</span>
+        <span *ngIf="currentPage + 1 > totalCharacters / 2">...</span>
       </div>
 
       <div type="button" class="btn btn-primary col-2 forward" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>

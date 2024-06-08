@@ -28,8 +28,6 @@ export class CharactersComponent {
         });
 
         this.pageQuatity = this.totalCharacters / 2;
-
-        console.log("page: ", this.pageQuatity);
       });
 
     return this.characters;
@@ -38,9 +36,9 @@ export class CharactersComponent {
   public forwardOrBackward(option: string, page: number,) {
     if (option == "forward") {
 
-      if (page < this.totalCharacters) {
+      if (page < this.totalCharacters / 2) {
         this.currentPage += 1;
-      } else if (page == this.totalCharacters) {
+      } else if (page == this.totalCharacters / 2) {
         this.currentPage = 1;
       } else {
         console.log("[Erro]: Não foi possível escolher uma opção de movimento na função: forwardOrBackward()");
@@ -51,7 +49,7 @@ export class CharactersComponent {
       if (page > 1) {
         this.currentPage -= 1;
       } else if (page == 1) {
-        this.currentPage = this.totalCharacters;
+        this.currentPage = this.totalCharacters / 2;
       } else {
         console.log("[Erro]: Não foi possível escolher uma opção de movimento na função: forwardOrBackward()");
       }
@@ -59,8 +57,6 @@ export class CharactersComponent {
     } else {
       console.log("[Erro]: Não foi possível enviar dados de paginação à Função: forwardOrBackward()");
     }
-
-    console.log(option, this.currentPage);
 
     return this.currentPage;
   }
