@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { Character } from '../interfaces/banner';
+// import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '../../services/api.service';
+import { Character } from '../../interfaces/banner';
+import { CharacterComponent } from '../characters/character/character.component';
 
 @Component({
   selector: 'app-items-list',
@@ -13,7 +15,10 @@ export class CharactersComponent {
   pageQuatity: number = 1;
   currentPage: number = 1;
 
-  constructor( private apiService: ApiService<Character> ) {
+  constructor(
+    private apiService: ApiService<Character>,
+    // private dialog: MatDialog,
+  ) {
     this.getItemsList();
   }
 
@@ -61,7 +66,11 @@ export class CharactersComponent {
     return this.currentPage;
   }
 
-  public openDescriptionModal(): void {
-    console.log("Abrir modal");
+  openDescriptionModal() {
+    // this.dialog.open
+    // this.dialog.open<CharacterComponent>(CharacterComponent, {
+    //   with: '70%',
+    //   data: this.characters
+    // });
   }
 }
