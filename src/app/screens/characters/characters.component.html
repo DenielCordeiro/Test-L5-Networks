@@ -1,0 +1,47 @@
+<section id="search">
+  <div class="search-button">
+    <div class="btn btn-primary">Burcar itens da lista</div>
+  </div>
+</section>
+
+<section id="grafico"></section>
+
+<section id="items-list-desktop">
+  <div class="row">
+    <div class="items py-4 col-6" *ngFor="let character of characters | paginate: { itemsPerPage: 2, currentPage: currentPage, totalItems: totalCharacters }">
+      <a class="item px-3 row" (click)="openDescriptionModal()">
+        <div class="description col-6">
+          <h1 class="name my-1">{{ character?.name }}</h1>
+          <h3 class="name">{{ character?.origin?.name }}</h3>
+          <h3 class="name">{{ character?.species }}</h3>
+        </div>
+
+        <div class="image col-6">
+          <img src="{{ character.image }}" alt="image">
+        </div>
+      </a>
+    </div>
+
+    <div class="pagination row">
+      <div type="button" class="btn btn-primary col-2 backward" (click)="forwardOrBackward('backward', currentPage)">Anterior</div>
+
+      <div class="col-8 numbers-per-page">
+        <span *ngIf="currentPage - 1 < 1">...</span>
+        <span *ngIf="currentPage - 1 >= 1">{{ currentPage - 1 }}</span>
+        <span>{{ currentPage }}</span>
+        <span *ngIf="currentPage + 1 <= totalCharacters / 2">{{ currentPage + 1 }}</span>
+        <span *ngIf="currentPage + 1 > totalCharacters / 2">...</span>
+      </div>
+
+      <div type="button" class="btn btn-primary col-2 forward" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- <section id="items-list-mobile">
+
+
+</section> -->

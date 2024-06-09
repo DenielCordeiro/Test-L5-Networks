@@ -4,21 +4,29 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ItemsListComponent } from './items-list/items-list.component';
+import { LoginComponent } from './screens/login/login.component';
+import { MenuComponent } from './screens/menu/menu.component';
+import { CharactersComponent } from './screens/characters/characters.component';
+import { CharacterComponent } from './screens/characters/character/character.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ItemsListComponent
+    MenuComponent,
+    CharactersComponent,
+    CharacterComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
