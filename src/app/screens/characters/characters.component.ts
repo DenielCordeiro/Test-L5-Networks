@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 // import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../../services/api.service';
 import { Character } from '../../interfaces/banner';
-import { CharacterComponent } from '../characters/character/character.component';
+// import { CharacterComponent } from '../characters/character/character.component';
 
 @Component({
   selector: 'app-items-list',
