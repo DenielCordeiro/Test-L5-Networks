@@ -12,7 +12,6 @@ interface API<T extends Character> {
   providedIn: 'root'
 })
 export class ApiService<T extends Character> {
-
   rickAndMotyAPI: string = 'https://rickandmortyapi.com/api/character';
 
   constructor( public http: HttpClient ) {}

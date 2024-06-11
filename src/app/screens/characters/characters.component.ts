@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../../services/api.service';
 import { Character } from '../../interfaces/banner';
-import { CharacterComponent } from './character/character.component';
 
 @Component({
   selector: 'app-items-list',
@@ -17,7 +15,6 @@ export class CharactersComponent {
 
   constructor(
     private apiService: ApiService<Character>,
-    public dialog: MatDialog,
   ) {
     this.getItemsList();
   }
@@ -66,17 +63,5 @@ export class CharactersComponent {
     return this.currentPage;
   };
 
-  public openDescriptionModal(id: string | number | null): void {
-    if (id == null) {
-      const dialogRef = this.dialog.open<CharacterComponent>(CharacterComponent, {
-        width: '70%',
-        data: this.characters
-      });
-
-      dialogRef.afterClosed().subscribe(() => {
-        console.log("fecou o modal");
-      })
-    }
-
-  };
+  public openDescriptionModal(): void {}
 }
