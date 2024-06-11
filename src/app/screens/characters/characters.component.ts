@@ -23,7 +23,6 @@ export class CharactersComponent {
     this.apiService.getRickAndMotyAPI()
       .then(items => {
         this.characters = items;
-        console.log("items: ", this.characters);
 
         this.characters.forEach(character => {
           this.totalCharacters = Number(character.id);
