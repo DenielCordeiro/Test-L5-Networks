@@ -5,38 +5,129 @@
   margin: 0
   padding: 0
 
+.title
+  width: 100%
+  display: flex
+  justify-content: center
+  color: colors.$primary
+
+.search-button
+  display: flex
+  padding-left: 9.5vw
+
+  @include mobile.display
+    margin-bottom: 5vh !important
+    padding-left: 14.5vw
+
+  input
+    width: 190px
+    padding-left: 10px
+
+  i
+    cursor: pointer
+    font-size: 25px
+
+    &:hover
+      color: colors.$primary
+
+#items-list-desktop
+  display: inline
+
+  @include mobile.display
+    display: none
+
+#items-list-mobile
+  display: none
+
+  @include mobile.display
+    display: inline
+
 .items
-  background-color: colors.$red
   display: flex
   justify-content: center
 
   .item
-    width: 26vw
+    width: 30vw
     height: 35vh
     background-color: colors.$white
     border: 1px solid colors.$white
     border-radius: 5%
-    border-top-left-radius: 0%
+    border-top-right-radius: 0%
     cursor: pointer
     text-decoration: none
 
     &:hover
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 
-.image
-  display: flex
-  justify-content: center
+    @include mobile.display
+      width: 70vw
+      height: 20vh
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 
-  img
-    margin-top: -0.1vh
-    width: 16vw
-    height: 35.1vh
-    border-top-right-radius: 5%
+    .image
+      display: flex
+      justify-content: center
+
+      img
+        width: 17vw
+        height: 34.9vh
+        border-top-left-radius: 5%
+
+        @include mobile.display
+          margin-left: -8.5vw
+          width: 100%
+          height: 19.9vh
+
+    .description
+      text-align: start
+      width: 50%
+      padding-left: 3vw
+      color: colors.$dark
+
+      @include mobile.display
+        padding-left: 5vw
 
 .pagination
-  background-color: colors.$black
+  width: 100%
+  font-size: 20px
+  padding: 0px 30vw 0px 30vw
+  margin: 10vh 0px 5vh 0px
+
+  @include mobile.display
+    padding: 0px 15vw 0px 15vw
+
+  .backward-button, .forward-button
+    padding: 4px 6px 1px 6px
+
+  .backward
+    display: flex
+    // justify-content: start
+
+  .forward
+    display: flex
+    // justify-content: end
 
   .numbers-per-page
-    color: colors.$white
+    color: colors.$dark
+    font-size: 20px
     display: flex
     justify-content: center
+    align-items: center
+
+    @include mobile.display
+      padding-left: 0px
+      font-size: 18px
+
+    .backwardPage, .forwardPage
+      cursor: pointer
+
+      &:hover
+        color: colors.$primary
+
+    .currentPage
+      font-size: 26px
+      border-bottom: 2px solid colors.$primary
+      font-weight: 600
+
+      @include mobile.display
+        font-size: 22px

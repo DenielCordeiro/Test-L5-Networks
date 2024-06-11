@@ -1,47 +1,86 @@
-<section id="search">
-  <div class="search-button">
-    <div class="btn btn-primary">Burcar itens da lista</div>
+<section id="title">
+  <div class="title my-5">
+    <h2>Personagens do Rick e Moty</h2>
   </div>
 </section>
 
-<section id="grafico"></section>
+<section id="search">
+  <div class="search-button my-4">
+    <input id="search-input" class="form-control form-control-lg" type="text" placeholder="Burcar Personagem">
+    <label for="search-input" class="mx-3 mt-2">
+      <i class="bi bi-search"></i>
+    </label>
+  </div>
+</section>
 
 <section id="items-list-desktop">
   <div class="row">
     <div class="items py-4 col-6" *ngFor="let character of characters | paginate: { itemsPerPage: 2, currentPage: currentPage, totalItems: totalCharacters }">
       <a class="item px-3 row" (click)="openDescriptionModal()">
-        <div class="description col-6">
-          <h1 class="name my-1">{{ character?.name }}</h1>
-          <h3 class="name">{{ character?.origin?.name }}</h3>
-          <h3 class="name">{{ character?.species }}</h3>
-        </div>
-
         <div class="image col-6">
           <img src="{{ character.image }}" alt="image">
+        </div>
+
+        <div class="description col-6">
+          <h2 class="name my-1">{{ character?.name }}</h2>
+          <h4 class="name">{{ character?.origin?.name }}</h4>
+          <h4 class="name">{{ character?.species }}</h4>
         </div>
       </a>
     </div>
 
     <div class="pagination row">
-      <div type="button" class="btn btn-primary col-2 backward" (click)="forwardOrBackward('backward', currentPage)">Anterior</div>
+      <div class="col-4 backward">
+        <div type="button" class="btn btn-primary backward-button" (click)="forwardOrBackward('backward', currentPage)">Anterior</div>
+      </div>
 
-      <div class="col-8 numbers-per-page">
+      <div class="col-4 numbers-per-page">
         <span *ngIf="currentPage - 1 < 1">...</span>
-        <span *ngIf="currentPage - 1 >= 1">{{ currentPage - 1 }}</span>
-        <span>{{ currentPage }}</span>
-        <span *ngIf="currentPage + 1 <= totalCharacters / 2">{{ currentPage + 1 }}</span>
+        <span *ngIf="currentPage - 1 >= 1" class="backwardPage" (click)="forwardOrBackward('backward', currentPage)">{{ currentPage - 1 }}</span>
+        <span class="currentPage mx-4">{{ currentPage }}</span>
+        <span *ngIf="currentPage + 1 <= totalCharacters / 2" class="forwardPage" (click)="forwardOrBackward('forward', currentPage)">{{ currentPage + 1 }}</span>
         <span *ngIf="currentPage + 1 > totalCharacters / 2">...</span>
       </div>
 
-      <div type="button" class="btn btn-primary col-2 forward" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>
+      <div class="col-4 forward">
+        <div type="button" class="btn btn-primary forward-button" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>
+      </div>
     </div>
-
   </div>
 </section>
 
+<section id="items-list-mobile">
+  <div class="items mt-4 row" *ngFor="let character of characters | paginate: { itemsPerPage: 2, currentPage: currentPage, totalItems: totalCharacters }">
+    <a class="item px-3 row" (click)="openDescriptionModal()">
+      <div class="image col-6">
+        <img src="{{ character.image }}" alt="image">
+      </div>
 
+      <div class="description col-6">
+        <h5 class="name my-1">{{ character?.name }}</h5>
+        <p class="name">{{ character?.origin?.name }}</p>
+        <p class="name">{{ character?.species }}</p>
+      </div>
+    </a>
 
-<!-- <section id="items-list-mobile">
+    <hr class="mt-4">
+  </div>
 
+  <div class="pagination row mt-5">
+    <div class="col-4 backward">
+      <div type="button" class="btn btn-primary backward-button" (click)="forwardOrBackward('backward', currentPage)">Anterior</div>
+    </div>
 
-</section> -->
+    <div class="col-4 numbers-per-page">
+      <span *ngIf="currentPage - 1 < 1">...</span>
+      <span *ngIf="currentPage - 1 >= 1" class="backwardPage" (click)="forwardOrBackward('backward', currentPage)">{{ currentPage - 1 }}</span>
+      <span class="currentPage mx-4">{{ currentPage }}</span>
+      <span *ngIf="currentPage + 1 <= totalCharacters / 2" class="forwardPage" (click)="forwardOrBackward('forward', currentPage)">{{ currentPage + 1 }}</span>
+      <span *ngIf="currentPage + 1 > totalCharacters / 2">...</span>
+    </div>
+
+    <div class="col-4 forward">
+      <div type="button" class="btn btn-primary forward-button" (click)="forwardOrBackward('forward', currentPage)">Proxima</div>
+    </div>
+  </div>
+</section>

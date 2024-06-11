@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-// import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { Character } from 'src/app/interfaces/banner';
 
 @Component({
   selector: 'app-character',
@@ -7,8 +7,5 @@ import { Component, Inject } from '@angular/core';
   styleUrls: ['./character.component.sass']
 })
 export class CharacterComponent {
-  constructor(
-    // @Inject(MAT_DIALOG_DATA)
-  ) {}
-
+  constructor() {}
 }
